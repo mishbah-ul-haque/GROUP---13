@@ -64,7 +64,7 @@
               \textbf{Department: BCA}
         \item \textbf{Sayantani Hansda}\\
               \textbf{Roll No: 30054623020}\\
-              \textbf{Department: BSc in IT (Data Science)}
+              \textbf{Department: BSc in IT (AI)}
     \end{enumerate}
     \vspace{0.8 cm}
     
@@ -184,5 +184,114 @@
 \textit{Date: [\today]}\\
 % Write your lab notebook entry here.
 
+
+\section*{Git Branching and Merging Steps}
+
+\begin{enumerate}
+    \item Create a new repository on GitHub named \texttt{git-advanced}.
+    \item Clone the repository to your local machine using: 
+        \begin{verbatim}
+        git clone <repo_url>
+        \end{verbatim}
+    \item Create a new branch \texttt{feature-1} and switch to it using:
+        \begin{verbatim}
+        git checkout -b feature-1
+        \end{verbatim}
+    \item Create a new file \texttt{shared.txt} with the following content:
+        \begin{verbatim}
+        This is a shared file.
+        Line 1: Original text.
+        Line 2: Original text.
+        \end{verbatim}
+    \item Stage and commit the changes with:
+        \begin{verbatim}
+        git add shared.txt
+        git commit -m "Add shared.txt with original text"
+        \end{verbatim}
+    \item Push the branch to GitHub:
+        \begin{verbatim}
+        git push -u origin feature-1
+        \end{verbatim}
+    \item Create a new branch \texttt{feature-2} and switch to it:
+        \begin{verbatim}
+        git checkout -b feature-2
+        \end{verbatim}
+    \item Checkout \texttt{shared.txt} from the \texttt{main} branch:
+        \begin{verbatim}
+        git checkout main -- shared.txt
+        \end{verbatim}
+    \item Modify the second line in \texttt{shared.txt}:
+        \begin{verbatim}
+        Line 2: Modified text in feature-2.
+        \end{verbatim}
+    \item Stage and commit the changes with:
+        \begin{verbatim}
+        git add shared.txt
+        git commit -m "Modify second line in feature-2"
+        \end{verbatim}
+    \item Push \texttt{feature-2} to GitHub:
+        \begin{verbatim}
+        git push -u origin feature-2
+        \end{verbatim}
+    \item Switch back to the \texttt{feature-1} branch:
+        \begin{verbatim}
+        git checkout feature-1
+        \end{verbatim}
+    \item Modify the second line in \texttt{shared.txt}:
+        \begin{verbatim}
+        Line 2: Modified text in feature-1.
+        \end{verbatim}
+    \item Stage and commit the changes with:
+        \begin{verbatim}
+        git add shared.txt
+        git commit -m "Modify second line in feature-1"
+        \end{verbatim}
+    \item Push \texttt{feature-1} to GitHub.
+    \item Merge \texttt{feature-1} into the \texttt{main} branch:
+        \begin{verbatim}
+        git checkout main
+        git merge feature-1
+        \end{verbatim}
+    \item Merge \texttt{feature-2} into the \texttt{main} branch (this will cause a conflict):
+    \vspace{1 cm}
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=0.5\linewidth]{conflict.jpg}
+\end{figure}
+\vspace{0.5 cm}
+ \vspace{1 cm}
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=0.5\linewidth]{History.jpg}
+\end{figure}
+\vspace{0.5 cm}
+
+        \begin{verbatim}
+        git merge feature-2
+        \end{verbatim}
+    \item Resolve the conflict in \texttt{shared.txt}, then stage and commit the resolution:
+        \begin{verbatim}
+        git add shared.txt
+        git commit -m "Resolve conflict between feature-1 and feature-2"
+        \end{verbatim}
+    \item Push the resolved \texttt{main} branch:
+        \begin{verbatim}
+        git push
+        \end{verbatim}
+    \item Delete both feature branches:
+     \vspace{1 cm}
+\begin{figure}[h!]
+   \centering
+    \includegraphics[width=0.5\linewidth]{Delete.jpg}
+\end{figure}
+\vspace{0.5 cm}
+        \begin{verbatim}
+        
+        git branch -d feature-1
+        git branch -d feature-2
+        git push origin --delete feature-1
+        git push origin --delete feature-2
+        \end{verbatim}
+\end{enumerate}
 
 \end{document}
